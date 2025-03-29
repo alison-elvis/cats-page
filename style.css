@@ -1,0 +1,84 @@
+:root {
+  --primary-color: #264653; /* Azul petróleo */
+  --secondary-color: #2a9d8f; /* Verde esmeralda */
+  --accent-color: #e76f51; /* Vermelho terroso */
+  --background-color: #f4a261; /* Laranja suave */
+  --text-color: #1d3557; /* Azul profundo */
+  --muted-text-color: #a8dadc; /* Azul pastel */
+  --error-color: #e63946; /* Vermelho vibrante */
+  --success-color: #38b000; /* Verde saudável */
+  --warning-color: #f77f00; /* Laranja energético */
+  --padding-small: 10px;
+  --padding-medium: 15px;
+  --padding-large: 20px;
+  --border-radius-small: 5px;
+  --border-radius-medium: 10px;
+  --border-radius-large: 15px;
+  --margin-small: 10px;
+  --margin-medium: 20px;
+  --margin-large: 30px;
+  --font-size-small: 14px;
+  --font-size-medium: 18px;
+  --font-size-large: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  min-height: 100dvh;
+  margin: var(--margin-small);
+  padding: var(--padding-medium);
+  grid-template-rows: auto 1fr auto;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--font-size-medium);
+}
+
+header, footer {
+  text-align: center;
+  padding: var(--padding-large);
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  border-radius: var(--border-radius-medium);
+}
+
+main {
+  max-width: 1200px;
+  align-self: center;
+  margin: var(--margin-medium) auto;
+  padding: var(--padding-medium);
+  border-radius: var(--border-radius-medium);
+}
+
+.two-column-layout {
+  display: grid;
+  gap: var(--margin-medium);
+  @media (width >= 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (width <= 768px) {
+  .two-column-layout {
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+  }
+  .two-column-layout > * {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+  figure {
+    z-index: -1;
+  }
+  :is(h1, h2, h3, h4, h5, h6, ul, p, figcaption) {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: var(--padding-small);
+    border-radius: var(--border-radius-small);
+    color: var(--background-color);
+    font-size: var(--font-size-small);
+  }
+}
